@@ -1,15 +1,18 @@
 <template>
-    <div>
-        <h2>{{ data }}</h2>
-    </div>
+    <select class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
 </template>
 
 <script>
-export default {
-    data(){
-        return{
-            data: "Hello World",
+    export default {
+        data(){
+            return {
+                data: "Hello World 3",
+            }
         }
     }
-}
 </script>
