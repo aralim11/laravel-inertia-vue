@@ -7,6 +7,11 @@
         @inertiaHead
     </head>
     <body>
-        @inertia
+        <div>
+
+            <main class="py-4">
+                @inertia
+            </main>
+        </div>
     </body>
 </html>
