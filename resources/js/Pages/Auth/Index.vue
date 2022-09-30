@@ -3,18 +3,18 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header">Login <span v-if="!formIsValid" style="float: right; color:red;">Please Enter Valid Email and Password!!</span></div>
 
                     <div class="card-body">
-                        <form >
+                        <form @submit.prevent="submitLogin">
                             <div class="row mb-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control is-invalid" name="email" required autocomplete="email" autofocus>
+                                    <input id="email" type="email" class="form-control" v-model.trim="email" autocomplete="email" autofocus>
 
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>ghfghfhfhgfh</strong>
+                                        <p class="error-msg" v-if="$page.props.errors.email">{{ $page.props.errors.email }}</p>
                                     </span>
 
                                 </div>
@@ -24,12 +24,11 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control is-invalid" name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control" v-model.trim="password" autocomplete="current-password">
 
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>dfssfsfsfsdfdsf</strong>
+                                        <p class="error-msg">ghfghfhfhgfh</p>
                                     </span>
-
                                 </div>
                             </div>
 
@@ -59,3 +58,31 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        data(){
+            return{
+                email: '',
+                password: '',
+                formIsValid: true,
+            }
+        },
+
+        methods: {
+            submitLogin(){
+                this.formIsValid = true;
+                if (this.email == '' || !this.email.includes('@') || this.password.length < 4) {
+                    this.formIsValid = false;
+                    return;
+                }
+
+                const data = this.$inertia.post('/login', {
+                    email: this.email,
+                    password: this.password,
+                });
+                console.log(data);
+            }
+        }
+    }
+</script>
