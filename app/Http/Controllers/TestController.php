@@ -11,16 +11,6 @@ class TestController extends Controller
 
     public function index()
     {
-        // $emp = Employee::with('month')->all();
-        $emp = array(
-            "01" => array('Name' => "Alim"),
-            "02" => array('Name' => "Rubel"),
-        );
-
-        foreach($emp as $emps){
-            echo $emps['Name'];
-        }
-
-        // return $emp;
+        return "123";
     }
 }
