@@ -14,8 +14,8 @@
         </style>
     </head>
     <body>
-        <main class="py-4">
-            @inertia
-        </main>
+
+        @inertia
+
     </body>
 </html>
