@@ -5,17 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
         @vite(['resources/js/app.js'])
         @inertiaHead
-
-        <style>
-            .error-msg{
-                font-style: italic;
-                font-weight: 500;
-            }
-        </style>
     </head>
     <body>
-
         @inertia
-
     </body>
 </html>
