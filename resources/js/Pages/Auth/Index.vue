@@ -12,11 +12,7 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" v-model.trim="email" autocomplete="email" autofocus>
-
-                                    <span class="invalid-feedback" role="alert">
-                                        <p class="error-msg" v-if="$page.props.errors.email">{{ $page.props.errors.email }}</p>
-                                    </span>
-
+                                    <p class="error-msg" v-if="errors.email">{{ errors.email }}</p>
                                 </div>
                             </div>
 
@@ -61,6 +57,10 @@
 
 <script>
     export default {
+        props: {
+            errors: Object,
+        },
+
         data(){
             return{
                 email: '',
@@ -81,7 +81,6 @@
                     email: this.email,
                     password: this.password,
                 });
-                console.log(data);
             }
         }
     }
