@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Company;
 
 class CompanyController extends Controller
 {
@@ -12,33 +13,32 @@ class CompanyController extends Controller
         return Inertia::render('Company/Index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return Inertia::render('Company/AddForm');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'company_name' => 'required|string|unique:companies|max:255',
+            'slogan' => 'required|string|max:255',
+            'std' => 'required|date',
+        ]);
+
+        if ($validated) {
+            Company::create([
+                'company_name' => $request->company_name,
+                'slogan' => $request->slogan,
+                'std' => $request->std,
+            ]);
+
+            return redirect()->route('company.create')->with('success', 'Company Create Successfully!!');
+        } else {
+            return redirect()->route('company.create')->with('error', 'Company Not Created!!');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

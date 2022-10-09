@@ -42,7 +42,12 @@ class HandleInertiaRequests extends Middleware
                 'user' => [
                     'username' => Auth::user()->name,
                 ]
-            ] : null
+            ] : null,
+
+            'flash' => [
+                'success' => session('success'),
+                'error' => session('error'),
+            ]
         ]);
     }
 }
