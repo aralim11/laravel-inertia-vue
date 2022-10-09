@@ -3,6 +3,7 @@
     font-weight: 400;
     margin: 0px;
     color: red;
+    font-size: 12px;
 }
 
 .float-right{
@@ -16,4 +17,8 @@
 
 .fw-600{
     font-weight: 600;
+}
+
+.m-b-6-main-row{
+    margin-bottom: 6px!important;
 }

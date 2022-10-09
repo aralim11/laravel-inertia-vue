@@ -1,5 +1,8 @@
 <template>
-    <layout>
+    <Layout>
+        <Head>
+            <title>iHelpBD HRM - Company</title>
+        </Head>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
@@ -13,17 +16,16 @@
                 </div>
             </div>
         </div>
-    </layout>
+    </Layout>
 </template>
 
 <script>
-    import LayOut from "./../Layouts/Layout.vue";
-    import { Link } from '@inertiajs/inertia-vue3';
+    import Layout from "./../Layouts/Layout.vue";
+    import { Link, Head } from '@inertiajs/inertia-vue3';
 
     export default {
         components: {
-            'layout' : LayOut,
-            Link,
+            Layout, Link, Head,
         },
     }
 </script>

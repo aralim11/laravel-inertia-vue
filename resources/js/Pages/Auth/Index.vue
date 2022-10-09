@@ -77,7 +77,7 @@
                     return;
                 }
 
-                const data = this.$inertia.post('/login', {
+                this.$inertia.post('/login', {
                     email: this.email,
                     password: this.password,
                 });
