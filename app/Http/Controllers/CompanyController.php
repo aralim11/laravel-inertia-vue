@@ -11,7 +11,9 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Company/Index');
+        $datas = Company::all();
+
+        return Inertia::render('Company/Index', compact('datas'));
     }
 
     public function create()
@@ -80,6 +82,6 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $id;
     }
 }
