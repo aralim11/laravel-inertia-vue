@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Inertia\Inertia;
 use App\Models\Company;
 
@@ -20,22 +21,26 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $validator = Validator::make($request->all(), [
             'company_name' => 'required|string|unique:companies|max:255',
             'slogan' => 'required|string|max:255',
             'std' => 'required|date',
         ]);
 
-        if ($validated) {
-            Company::create([
+        if (!$validator->fails()) {
+            $query = Company::create([
                 'company_name' => $request->company_name,
                 'slogan' => $request->slogan,
                 'std' => $request->std,
             ]);
 
-            return redirect()->route('company.create')->with('success', 'Company Create Successfully!!');
+            if ($query) {
+                return redirect()->route('company.create')->with('success', 'Company Create Successfully!!');
+            } else {
+                return redirect()->route('company.create')->with('success', 'Company Not Created!!');
+            }
         } else {
-            return redirect()->route('company.create')->with('error', 'Company Not Created!!');
+            return redirect()->route('company.create')->withErrors($validator);
         }
     }
 
