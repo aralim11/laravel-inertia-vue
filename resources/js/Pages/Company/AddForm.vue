@@ -8,7 +8,6 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-title">Company
-                            <span v-if="$page.props.flash.success" style="float: right; color:red;">{{ $page.props.flash.success }}</span>
                             <Link href="/company"><button class="btn btn-success btn-sm pull-right float-right" type="button">Back</button></Link>
                         </div>
 
@@ -80,15 +79,29 @@
                     company_name: this.company_name,
                     slogan: this.slogan,
                     std: this.std,
+                }, {
+                    onSuccess: (page) => {
+                         console.log(page.props.flash);
+                        if (page.props.flash.success != null) {
+                            this.company_name = '';
+                            this.slogan = '';
+                            this.std = '';
+
+                            this.$toast.show(page.props.flash.success, {
+                                position: "top-right",
+                                type: "success",
+                                duration: 2500,
+                            });
+                        } else {
+                            console.log(page.props.flash.error);
+                            this.$toast.show(page.props.flash.error, {
+                                position: "top-right",
+                                type: "error",
+                                duration: 2500,
+                            });
+                        }
+                    },
                 });
-
-                if (this.$page.props.flash) {
-                    console.log(this.$page.props.flash);
-                    this.company_name = '';
-                    this.slogan = '';
-                    this.std = '';
-                }
-
             }
         }
     }
