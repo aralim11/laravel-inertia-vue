@@ -23,13 +23,13 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="data in datas" v-bind:key="data.id">
-                                        <th scope="row">1</th>
+                                        <th scope="row">{{ countData }}</th>
                                         <td>{{ data.company_name }}</td>
                                         <td>{{ data.slogan }}</td>
                                         <td>{{ data.std }}</td>
                                         <td>{{ data.created_at }}</td>
                                         <td>
-                                            <button class="btn btn-secondary btn-sm" type="button">Edit</button>
+                                            <button class="btn btn-secondary btn-sm" type="button" v-on:click="editCompany(data.id)">Edit</button>
                                             &nbsp;<button class="btn btn-danger btn-sm" type="button" v-on:click="deleteCompany(data.id)">Delete</button>
                                         </td>
                                     </tr>
@@ -58,7 +58,39 @@
 
         methods: {
             deleteCompany(id){
-                this.$inertia.delete('/company/' + id);
+                this.$inertia.delete('/company/' + id, {
+                    onSuccess: (page) => {
+                        if (page.props.flash.success != null) {
+                            this.company_name = '';
+                            this.slogan = '';
+                            this.std = '';
+
+                            this.$toast.show(page.props.flash.success, {
+                                position: "top-right",
+                                type: "success",
+                                duration: 2500,
+                            });
+                        } else {
+                            this.$toast.show(page.props.flash.error, {
+                                position: "top-right",
+                                type: "error",
+                                duration: 2500,
+                            });
+                        }
+                    },
+                    onBefore: () => confirm('Are you sure, you want to delete this company?'),
+                });
+            },
+
+            editCompany(id){
+                this.$inertia.get('company/'+ id +'/edit');
+            },
+        },
+
+        computed: {
+            countData(){
+                var i = 1
+                return i;
             }
         }
     }
