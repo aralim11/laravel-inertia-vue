@@ -22,15 +22,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="data in datas" v-bind:key="data.id">
-                                        <th scope="row">{{ countData }}</th>
-                                        <td>{{ data.company_name }}</td>
-                                        <td>{{ data.slogan }}</td>
-                                        <td>{{ data.std }}</td>
-                                        <td>{{ data.created_at }}</td>
+                                    <tr v-for="(company, index) in companies.data" v-bind:key="company.id">
+                                        <th scope="row">{{ index + 1 }}</th>
+                                        <td>{{ company.company_name }}</td>
+                                        <td>{{ company.slogan }}</td>
+                                        <td>{{ company.std }}</td>
+                                        <td>{{ company.created_at }}</td>
                                         <td>
-                                            <button class="btn btn-secondary btn-sm" type="button" v-on:click="editCompany(data.id)">Edit</button>
-                                            &nbsp;<button class="btn btn-danger btn-sm" type="button" v-on:click="deleteCompany(data.id)">Delete</button>
+                                            <button class="btn btn-secondary btn-sm" type="button" v-on:click="editCompany(company.id)">Edit</button>
+                                            &nbsp;<button class="btn btn-danger btn-sm" type="button" v-on:click="deleteCompany(company.id)">Delete</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -49,7 +49,7 @@
 
     export default {
         props: {
-            datas: Object,
+            companies: Object,
         },
 
         components: {
@@ -86,12 +86,5 @@
                 this.$inertia.get('company/'+ id +'/edit');
             },
         },
-
-        computed: {
-            countData(){
-                var i = 1
-                return i;
-            }
-        }
     }
 </script>

@@ -11,9 +11,9 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $datas = Company::all();
+        $companies = Company::paginate(5);
 
-        return Inertia::render('Company/Index', compact('datas'));
+        return Inertia::render('Company/Index', compact('companies'));
     }
 
     public function create()
