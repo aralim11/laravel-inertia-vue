@@ -5,6 +5,7 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import Toaster from "@meforma/vue-toaster";
+import { InertiaProgress } from '@inertiajs/progress';
 
 createInertiaApp({
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
@@ -14,4 +15,8 @@ createInertiaApp({
         .use(Toaster)
         .mount(el)
     },
-})
+});
+
+InertiaProgress.init({
+    color: "Blue",
+});
