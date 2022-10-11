@@ -39,7 +39,7 @@ class CompanyController extends Controller
             if ($query) {
                 return redirect()->route('company.create')->with('success', 'Company Create Successfully!!');
             } else {
-                return redirect()->route('company.create')->with('success', 'Company Not Created!!');
+                return redirect()->route('company.create')->with('error', 'Company Not Created!!');
             }
         } else {
             return redirect()->route('company.create')->withErrors($validator);
@@ -51,37 +51,44 @@ class CompanyController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $company = Company::find($id);
+
+        return Inertia::render('Company/EditForm', compact('company'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'company_name' => 'required|string|max:255|unique:companies,company_name,' . $id,
+            'slogan' => 'required|string|max:255',
+            'std' => 'required|date',
+        ]);
+
+        if (!$validator->fails()) {
+            $query = Company::where('id', $id)
+                        ->update(['company_name' => $request->company_name, 'slogan' => $request->slogan, 'std' => $request->std]);
+
+            if ($query) {
+                return redirect()->route('company.edit', $id)->with('success', 'Company Update Successfully!!');
+            } else {
+                return redirect()->route('company.edit', $id)->with('error', 'Company Not updated!!');
+            }
+        } else {
+            return redirect()->route('company.edit', $id)->withErrors($validator);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        return $id;
+        if ($id) {
+            $query = Company::where('id', $id)->delete();
+
+            if ($query) {
+                return redirect()->route('company.index')->with('success', 'Company Delete Successfully!!');
+            }
+        }
     }
 }
