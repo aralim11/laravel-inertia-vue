@@ -15,13 +15,3 @@
         </div>
     </layout>
 </template>
-
-<script>
-    import LayOut from "./../Layouts/Layout.vue";
-
-    export default {
-        components:{
-            'layout' : LayOut,
-        }
-    }
-</script>
