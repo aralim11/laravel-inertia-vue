@@ -57,16 +57,9 @@
 </template>
 
 <script>
-    import Layout from "./../Layouts/Layout.vue";
-    import { Link, Head } from '@inertiajs/inertia-vue3';
-
     export default {
         props: {
             company: Object,
-        },
-
-        components:{
-            Layout, Link, Head,
         },
 
         data(){

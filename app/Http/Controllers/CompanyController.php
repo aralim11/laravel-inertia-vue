@@ -11,7 +11,7 @@ class CompanyController extends Controller
 {
     public function index()
     {
-        $companies = Company::paginate(5);
+        $companies = Company::paginate(10);
 
         return Inertia::render('Company/Index', compact('companies'));
     }
@@ -44,11 +44,6 @@ class CompanyController extends Controller
         } else {
             return redirect()->route('company.create')->withErrors($validator);
         }
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     public function edit($id)

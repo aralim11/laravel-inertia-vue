@@ -35,6 +35,9 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+                            <Pagination v-bind:links="companies.links"/>
+
                         </div>
                     </div>
                 </div>
@@ -44,8 +47,7 @@
 </template>
 
 <script>
-    import Layout from "./../Layouts/Layout.vue";
-    import { Link, Head } from '@inertiajs/inertia-vue3';
+    import Pagination from "./../Layouts/Pagination.vue";
 
     export default {
         props: {
@@ -53,7 +55,7 @@
         },
 
         components: {
-            Layout, Link, Head,
+            Pagination,
         },
 
         methods: {

@@ -10,7 +10,7 @@
                 <ul class="navbar-nav me-auto"></ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <Link class="nav-link" href="/emp">Dashboard</Link>
+                        <Link class="nav-link" href="/">Dashboard</Link>
                     </li>
 
                     <li class="nav-item dropdown">
