@@ -1,2 +1,1 @@
-
-# hrm-ihelp
+# laravel-inertia-vue

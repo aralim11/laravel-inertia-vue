@@ -6,11 +6,11 @@
 </template>
 
 <script>
-    import NavBar from './Nav.vue';
+import NavBar from "./Nav.vue";
 
-    export default {
-        components: {
-            'nav-bar': NavBar,
-        }
-    }
+export default {
+    components: {
+        "nav-bar": NavBar,
+    },
+};
 </script>

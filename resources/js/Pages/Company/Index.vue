@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <Head>
-            <title>iHelpBD HRM - Company</title>
+            <title>AppFunBD - Company</title>
         </Head>
         <div class="container">
             <div class="row justify-content-center">
