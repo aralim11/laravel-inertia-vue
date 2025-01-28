@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('company_name');
             $table->string('slogan');
             $table->date('std');
+            $table->string('company_type');
             $table->softDeletes();
             $table->timestamps();
         });

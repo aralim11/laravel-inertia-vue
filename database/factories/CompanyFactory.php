@@ -21,6 +21,7 @@ class CompanyFactory extends Factory
             'company_name' => fake()->unique()->company(),
             'slogan' => fake()->catchPhrase(),
             'std' => now(),
+            'company_type' => fake()->company(),
         ];
     }
 }

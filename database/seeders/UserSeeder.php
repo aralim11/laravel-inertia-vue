@@ -20,21 +20,21 @@ class UserSeeder extends Seeder
         User::insert([
             [
                 'name' => 'Abdul Alim',
-                'email' => 'alim@ihelpbd.com',
+                'email' => 'alim@appfunbd.com',
                 'password' => Hash::make('1234'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
                 'name' => 'Mehedi Shamim',
-                'email' => 'mehedi@ihelpbd.com',
+                'email' => 'mehedi@appfunbd.com',
                 'password' => Hash::make('1234'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             ],
             [
                 'name' => 'Sakil Jomadder',
-                'email' => 'sakil@ihelpbd.com',
+                'email' => 'sakil@appfunbd.com',
                 'password' => Hash::make('1234'),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")

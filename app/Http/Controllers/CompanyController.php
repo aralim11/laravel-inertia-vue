@@ -27,6 +27,7 @@ class CompanyController extends Controller
             'company_name' => 'required|string|unique:companies|max:255',
             'slogan' => 'required|string|max:255',
             'std' => 'required|date',
+            'company_type' => 'required|in:1,2,3',
         ]);
 
         if (!$validator->fails()) {
@@ -34,6 +35,7 @@ class CompanyController extends Controller
                 'company_name' => $request->company_name,
                 'slogan' => $request->slogan,
                 'std' => $request->std,
+                'company_type' => $request->company_type,
             ]);
 
             if ($query) {
@@ -64,7 +66,7 @@ class CompanyController extends Controller
 
         if (!$validator->fails()) {
             $query = Company::where('id', $id)
-                        ->update(['company_name' => $request->company_name, 'slogan' => $request->slogan, 'std' => $request->std]);
+                ->update(['company_name' => $request->company_name, 'slogan' => $request->slogan, 'std' => $request->std]);
 
             if ($query) {
                 return redirect()->route('company.edit', $id)->with('success', 'Company Update Successfully!!');

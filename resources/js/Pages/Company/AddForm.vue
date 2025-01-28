@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <Head>
-            <title>iHelpBD HRM - Add Company</title>
+            <title>AppFunBD - Add Company</title>
         </Head>
         <div class="container">
             <div class="row justify-content-center">
@@ -40,6 +40,21 @@
                                     </div>
                                 </div>
 
+                                <div class="row mb-3">
+                                    <label for="company_type" class="col-md-4 col-form-label text-md-end">Company Type</label>
+
+                                    <div class="col-md-5">
+                                        <select class="form-select" id="company_type" v-model.trim="company_type" required>
+                                            <option selected>Select Company Type</option>
+                                            <option value="1">Hospitality</option>
+                                            <option value="2">Insurance, Banking & Finance</option>
+                                            <option value="3">E-commerce</option>
+                                            <option value="4">NGO</option>
+                                        </select>
+                                        <p class="error-msg" v-if="$page.props.errors.company_type">{{ $page.props.errors.company_type }}</p>
+                                    </div>
+                                </div>
+
                                 <div class="row mb-0">
                                     <div class="col-md-8 offset-md-4">
                                         <button type="submit" class="btn btn-primary">
@@ -63,7 +78,12 @@
                 company_name: '',
                 slogan: '',
                 std: '',
+                company_type: '',
             }
+        },
+
+        created(){
+            this.std = new Date().toISOString().slice(0, 10);
         },
 
         methods: {
@@ -72,12 +92,13 @@
                     company_name: this.company_name,
                     slogan: this.slogan,
                     std: this.std,
+                    company_type: this.company_type,
                 }, {
                     onSuccess: (page) => {
                         if (page.props.flash.success != null) {
                             this.company_name = '';
                             this.slogan = '';
-                            this.std = '';
+                            this.company_type = '';
 
                             this.$toast.show(page.props.flash.success, {
                                 position: "top-right",

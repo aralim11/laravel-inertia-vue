@@ -15,12 +15,30 @@ class Company extends Model
         'company_name',
         'slogan',
         'std',
+        'company_type',
     ];
 
+    /**
+     * Accessor for created_at attribute
+     *
+     * @return Attribute
+     */
     protected function createdAt(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => date('M d, Y', strtotime($value)),
+            get: fn($value) => date('M d, Y', strtotime($value)),
+        );
+    }
+
+    /**
+     * Accessor for std attribute
+     *
+     * @return Attribute
+     */
+    protected function std(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => date('M d, Y', strtotime($value)),
         );
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <Layout>
         <Head>
-            <title>iHelpBD HRM - Edit Company</title>
+            <title>AppFunBD - Edit Company</title>
         </Head>
         <div class="container">
             <div class="row justify-content-center">
@@ -17,7 +17,7 @@
                                     <label for="company_name" class="col-md-4 col-form-label text-md-end">Company Name</label>
 
                                     <div class="col-md-5">
-                                        <input id="company_name" type="text" class="form-control" v-model.trim="company_name" autocomplete="company_name" autofocus>
+                                        <input id="company_name" type="text" class="form-control" v-model.trim="company_name" autocomplete="company_name" required autofocus>
                                         <p class="error-msg" v-if="$page.props.errors.company_name">{{ $page.props.errors.company_name }}</p>
                                     </div>
                                 </div>
@@ -26,7 +26,7 @@
                                     <label for="slogan" class="col-md-4 col-form-label text-md-end">Company Slogan</label>
 
                                     <div class="col-md-5">
-                                        <input id="slogan" type="text" class="form-control" v-model.trim="slogan" autocomplete="slogan" autofocus>
+                                        <input id="slogan" type="text" class="form-control" v-model.trim="slogan" autocomplete="slogan" required autofocus>
                                         <p class="error-msg" v-if="$page.props.errors.slogan">{{ $page.props.errors.slogan }}</p>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                     <label for="std" class="col-md-4 col-form-label text-md-end">Company ESTD Date</label>
 
                                     <div class="col-md-5">
-                                        <input id="std" type="date" class="form-control" v-model.trim="std" autocomplete="std" autofocus>
+                                        <input id="std" type="date" class="form-control" v-model.trim="std" autocomplete="std" required autofocus>
                                         <p class="error-msg" v-if="$page.props.errors.std">{{ $page.props.errors.std }}</p>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
             setData(){
                 this.company_name = this.company.company_name;
                 this.slogan = this.company.slogan;
-                this.std = this.company.std;
+                this.std = this.stdConvert(this.company.std);
             },
 
             editCompany(){
@@ -99,6 +99,10 @@
                         }
                     },
                 });
+            },
+
+            stdConvert(date){
+                return new Date(date).toISOString().slice(0, 10);
             }
         },
 

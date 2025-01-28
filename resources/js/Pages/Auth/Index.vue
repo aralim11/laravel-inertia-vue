@@ -66,12 +66,12 @@
                             <tbody>
                                 <tr>
                                     <td>Abdul Alim</td>
-                                    <td>alim@ihelpbd.com</td>
+                                    <td>alim@appfunbd.com</td>
                                     <td>1234</td>
                                 </tr>
                                 <tr>
                                     <td>Mehedi Shamim</td>
-                                    <td>mehedi@ihelpbd.com</td>
+                                    <td>mehedi@appfunbd.com</td>
                                     <td>1234</td>
                                 </tr>
                             </tbody>
@@ -91,8 +91,8 @@
 
         data(){
             return{
-                email: '',
-                password: '',
+                email: 'alim@appfunbd.com',
+                password: '1234',
                 formIsValid: true,
             }
         },
