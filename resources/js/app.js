@@ -19,6 +19,8 @@ createInertiaApp({
         .use(Toaster)
         .mount(el)
     },
+
+    title: (title) => `AppFunBD - ${title}`,
 });
 
 InertiaProgress.init({

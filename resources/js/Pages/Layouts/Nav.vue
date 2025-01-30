@@ -10,16 +10,16 @@
                 <ul class="navbar-nav me-auto"></ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <Link class="nav-link" :class="{ 'active': $page.url === '/' }" href="/">Dashboard</Link>
+                        <Link class="nav-link" :class="{ 'active': $page.url === '/home' }" href="/home">Dashboard</Link>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Settings</a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <Link class="dropdown-item" href="/company">Company</Link>
-                            <Link class="dropdown-item" href="/department">Department</Link>
-                            <Link class="dropdown-item" href="/project">Project</Link>
+                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/company' }" href="/company">Company</Link>
+                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/department' }" href="/department">Department</Link>
+                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/project' }" href="/project">Project</Link>
                         </div>
                     </li>
 
@@ -43,5 +43,9 @@
         components:{
             Link,
         },
+
+        created(){
+            console.log(this.$page);
+        }
     }
 </script>

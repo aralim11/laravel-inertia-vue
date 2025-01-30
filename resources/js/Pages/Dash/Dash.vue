@@ -1,6 +1,6 @@
 <template>
     <layout>
-        <Head title="AppFunBD - Dashboard"/>
+        <Head title="Dashboard"/>
 
         <div class="container">
             <div class="row justify-content-center">
