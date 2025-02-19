@@ -24,6 +24,16 @@
                     </li>
 
                     <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Localization</a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <button class="dropdown-item" @click="changeLanguage('en')">English</button>
+                            <button class="dropdown-item" @click="changeLanguage('bn')">বাংলা</button>
+                            <button class="dropdown-item" @click="changeLanguage('jp')">日本語</button>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $page.props.auth.user.username }}</a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -38,14 +48,21 @@
 
 <script>
     import { Link } from '@inertiajs/inertia-vue3';
+    import { usePage } from '@inertiajs/vue3';
 
     export default {
         components:{
             Link,
         },
 
-        created(){
-            console.log(this.$page);
-        }
+        methods: {
+            changeLanguage(lang) {
+                const { router } = usePage();
+                router.post("/localization", { locale: lang }, {
+                    preserveState: true,
+                    preserveScroll: true,
+                });
+            }
+        },
     }
 </script>

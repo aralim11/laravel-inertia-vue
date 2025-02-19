@@ -9,7 +9,7 @@
                         <div class="card-header">Dashboard</div>
 
                         <div class="card-body">
-                            <h1>DashBoard</h1>
+                            <h1>{{ $t('dashboard.dashboard') }}</h1>
                         </div>
                     </div>
                 </div>
@@ -24,6 +24,11 @@
     export default {
         components:{
             'layout' : LayOut,
+        },
+
+        created() {
+             console.log(this.$i18n.locale);
+            console.log(this.$page.props.translations.dashboard);
         }
     }
 </script>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -47,7 +49,29 @@ class HandleInertiaRequests extends Middleware
             'flash' => [
                 'success' => session('success'),
                 'error' => session('error'),
-            ]
+            ],
+
+            'locale' => App::getLocale(),
+            'translations' => fn() => $this->loadJsonTranslations(),
         ]);
+    }
+
+    private function loadJsonTranslations()
+    {
+        $locale = App::getLocale();
+        $langPath = lang_path($locale);
+
+        $translations = [];
+
+        if (File::exists($langPath)) {
+            foreach (File::allFiles($langPath) as $file) {
+                if ($file->getExtension() === 'json') {
+                    $name = pathinfo($file, PATHINFO_FILENAME);
+                    $translations[$name] = json_decode(File::get($file), true);
+                }
+            }
+        }
+
+        return $translations;
     }
 }
