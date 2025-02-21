@@ -7,7 +7,6 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import Toaster from "@meforma/vue-toaster";
 import { InertiaProgress } from '@inertiajs/progress';
 import Layout from './Pages/Layouts/Layout.vue';
-import i18n from "./i18n";
 
 createInertiaApp({
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
@@ -18,7 +17,6 @@ createInertiaApp({
         .component('Layout', Layout)
         .use(plugin)
         .use(Toaster)
-        .use(i18n)
         .mount(el)
     },
 
