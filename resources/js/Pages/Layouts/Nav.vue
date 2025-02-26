@@ -27,9 +27,7 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Role & Permission</a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/company' }" href="/company">Company</Link>
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/department' }" href="/department">Department</Link>
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/project' }" href="/project">Project</Link>
+                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/role' }" href="/role">Role</Link>
                         </div>
                     </li>
 
@@ -52,6 +50,6 @@
     export default {
         components:{
             Link,
-        },
+        }
     }
 </script>

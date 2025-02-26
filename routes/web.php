@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\LocalizationController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +26,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::resource('company', CompanyController::class);
     Route::resource('department', DepartmentController::class);
-    Route::resource('project', ProjectController::class);
+    Route::resource('role', RoleController::class);
 
-    ## localization
-    Route::post('/localization', [LocalizationController::class, 'index']);
 });
