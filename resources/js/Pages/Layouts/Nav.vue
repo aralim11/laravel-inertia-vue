@@ -10,24 +10,19 @@
                 <ul class="navbar-nav me-auto"></ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <Link class="nav-link" :class="{ 'active': $page.url === '/home' }" href="/home">Dashboard</Link>
+                        <Link class="nav-link" v-if="$page.props.auth.user.permissions.includes('home')" :class="{ 'active': $page.url === '/home' }" href="/home">Dashboard</Link>
+                    </li>
+
+                    <li class="nav-item">
+                        <Link class="nav-link" v-if="$page.props.auth.user.permissions.includes('roles.index')" :class="{ 'active': $page.url === '/role' }" href="/role">Role & Permission</Link>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Settings</a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/company' }" href="/company">Company</Link>
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/department' }" href="/department">Department</Link>
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/project' }" href="/project">Project</Link>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Role & Permission</a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <Link class="dropdown-item" :class="{ 'active': $page.url === '/role' }" href="/role">Role</Link>
+                            <Link class="dropdown-item" v-if="$page.props.auth.user.permissions.includes('company.index')" :class="{ 'active': $page.url === '/company' }" href="/company">Company</Link>
+                            <Link class="dropdown-item" v-if="$page.props.auth.user.permissions.includes('department.index')" :class="{ 'active': $page.url === '/department' }" href="/department">Department</Link>
                         </div>
                     </li>
 

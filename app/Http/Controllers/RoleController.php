@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
-use Illuminate\Http\Request;
 use App\Services\RolePermissionService;
 
 class RoleController extends Controller
 {
     private RolePermissionService $rolePermissionService;
 
+    /**
+     * RoleController constructor.
+     */
     public function __construct(RolePermissionService $rolePermissionService)
     {
         $this->rolePermissionService = $rolePermissionService;
@@ -20,8 +22,16 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return $roles = $this->rolePermissionService->getAllRoles();
+        $roles = $this->rolePermissionService->getAllRoles();
 
         return Inertia::render('Role/Index', compact('roles'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function create()
+    {
+        return Inertia::render('Role/Create');
     }
 }

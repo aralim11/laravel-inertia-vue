@@ -10,6 +10,7 @@
 
                         <div class="card-body">
                             <h1>Dashboard</h1>
+                            {{ $page.props }}
                         </div>
                     </div>
                 </div>
@@ -25,5 +26,12 @@
         components:{
             'layout' : LayOut,
         },
+
+        // created() {
+        //     console.log($page.props);
+        // }
+
+
+
     }
 </script>

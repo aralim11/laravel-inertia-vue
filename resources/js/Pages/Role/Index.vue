@@ -23,7 +23,9 @@
                                     <tr v-for="(role, index) in roles.data" v-bind:key="role.id">
                                         <th scope="row">{{ index + 1 }}</th>
                                         <td>{{ role.name }}</td>
-                                        <td>{{ role.slogan }}</td>
+                                        <td>
+                                            <Badge :badges="role.permissions" />
+                                        </td>
                                         <td>
                                             <button class="btn btn-secondary btn-sm" type="button" v-on:click="editRole(role.id)">Edit</button>
                                             &nbsp;<button class="btn btn-danger btn-sm" type="button" v-on:click="deleteRole(role.id)">Delete</button>
@@ -32,7 +34,7 @@
                                 </tbody>
                             </table>
 
-                            <!-- <Pagination v-bind:links="companies.links"/> -->
+                            <Pagination v-bind:links="roles.links"/>
 
                         </div>
                     </div>
@@ -44,6 +46,7 @@
 
 <script>
     import Pagination from "./../Layouts/Pagination.vue";
+    import Badge from "./../Layouts/Badge.vue";
 
     export default {
         props: {
@@ -52,6 +55,7 @@
 
         components: {
             Pagination,
+            Badge
         },
 
         methods: {

@@ -23,9 +23,8 @@ Route::get('/', [LoginController::class, 'index'])->name('login-main');
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('home', [HomeController::class, 'index'])->name('home')->middleware(['can:home']);
     Route::resource('company', CompanyController::class);
     Route::resource('department', DepartmentController::class);
     Route::resource('role', RoleController::class);
-
 });

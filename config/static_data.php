@@ -2,6 +2,12 @@
 
 return [
     'permissions' => [
+        'home' => [
+            'label' => 'home permissions',
+            'list' => [
+                ['name' => 'home'],
+            ],
+        ],
         'roles' => [
             'label' => 'role permissions',
             'list' => [
