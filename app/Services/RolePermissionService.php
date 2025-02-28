@@ -14,7 +14,7 @@ class RolePermissionService
      */
     public function getAllModule()
     {
-        return Module::paginate(10);
+        return Module::with('permissions')->paginate(10);
     }
 
     /**

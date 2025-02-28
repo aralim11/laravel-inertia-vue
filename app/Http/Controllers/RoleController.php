@@ -32,6 +32,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Role/Create');
+        $modules = $this->rolePermissionService->getAllModule();
+
+        return Inertia::render('Role/Create', compact('modules'));
     }
 }
